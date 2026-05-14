@@ -1,3 +1,5 @@
+// eslint.config.js defines linting rules for the JavaScript and JSX files.
+// It enables recommended rules for vanilla JS, React hooks, and Vite.
 import js from '@eslint/js'
 import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'

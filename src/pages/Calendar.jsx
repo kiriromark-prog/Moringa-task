@@ -1,3 +1,5 @@
+// Calendar.jsx shows a calendar and highlights days that have tasks.
+// The person can click a date to see tasks due on that day.
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
@@ -14,12 +16,14 @@ const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
 
+  // If no user is logged in, go back to the login page.
   useEffect(() => {
     if (!user) {
       navigate("/");
     }
   }, [navigate, user]);
 
+  // Compute the current month and year for rendering the calendar.
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
   const monthName = currentDate.toLocaleString("default", {

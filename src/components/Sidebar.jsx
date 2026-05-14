@@ -1,3 +1,5 @@
+// Sidebar.jsx is the left menu that appears on every page after login.
+// It shows buttons for Dashboard, Tasks, Calendar, Profile, and a logout button.
 import { NavLink, useNavigate } from "react-router-dom";
 import {
   LayoutDashboard,

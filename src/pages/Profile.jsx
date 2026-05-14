@@ -1,3 +1,5 @@
+// Profile.jsx is the account page for changing the name or deleting the account.
+// It also shows how many tasks are done and how many are left.
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
@@ -18,12 +20,14 @@ const Profile = () => {
   );
   const [saved, setSaved] = useState(false);
 
+  // If nobody is logged in, return to the login screen.
   useEffect(() => {
     if (!user) {
       navigate("/");
     }
   }, [navigate, user]);
 
+  // Save the new name and keep it for later.
   const handleSave = () => {
     const updated = { ...user, name };
     localStorage.setItem("user", JSON.stringify(updated));
@@ -33,6 +37,7 @@ const Profile = () => {
   };
 
   const handleDeleteAccount = () => {
+    // Delete the saved account and all tasks, then go back to login.
     if (window.confirm("Are you sure? This cannot be undone.")) {
       localStorage.removeItem("user");
       localStorage.removeItem("tasks");

@@ -1,3 +1,5 @@
+// Login.jsx is the page where people can log in or create a new account.
+// It remembers the account information right inside the browser.
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -9,6 +11,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  // Check the entered email and password against saved accounts.
   const handleLogin = (e) => {
     e.preventDefault();
     if (!email || !password) {
@@ -16,9 +19,7 @@ const Login = () => {
       return;
     }
     const users = JSON.parse(localStorage.getItem("users") || "[]");
-    const found = users.find(
-      (u) => u.email === email && u.password === password
-    );
+    const found = users.find((u) => u.email === email && u.password === password);
     if (!found) {
       setError("User not found. Please sign up.");
       return;
@@ -27,6 +28,7 @@ const Login = () => {
     navigate("/home");
   };
 
+  // Save a new account so the person can log in next time.
   const handleSignUp = (e) => {
     e.preventDefault();
     if (!name || !email || !password) {

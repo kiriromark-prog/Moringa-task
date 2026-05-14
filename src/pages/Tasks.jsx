@@ -1,3 +1,5 @@
+// Tasks.jsx is the page where the user can add new tasks and see their task list.
+// The tasks are saved in the browser, so they stay even after reloading.
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
@@ -23,17 +25,20 @@ const Tasks = () => {
     status: "pending",
   });
 
+  // If no user is logged in, go back to the login page.
   useEffect(() => {
     if (!user) {
       navigate("/");
     }
   }, [navigate, user]);
 
+  // Keep the task list updated in the page and also save it in the browser.
   const saveTasks = (updated) => {
     setTasks(updated);
     localStorage.setItem("tasks", JSON.stringify(updated));
   };
 
+  // Add a new task to the list using what the person typed in.
   const handleAddTask = () => {
     if (!newTask.title) return;
     const task = { ...newTask, id: Date.now() };
@@ -49,6 +54,7 @@ const Tasks = () => {
   };
 
   const handleComplete = (id) => {
+    // Mark a task as done or not done when the checkbox is clicked.
     const updated = tasks.map((t) =>
       t.id === id
         ? {
@@ -61,6 +67,7 @@ const Tasks = () => {
   };
 
   const handleDelete = (id) => {
+    // Delete a task from the list.
     saveTasks(tasks.filter((t) => t.id !== id));
   };
 

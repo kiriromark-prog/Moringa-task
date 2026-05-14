@@ -1,3 +1,5 @@
+// Home.jsx is the main dashboard page after login.
+// It shows the user's name, total tasks, completed tasks, and tasks due today.
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
@@ -12,6 +14,7 @@ const Home = () => {
     JSON.parse(localStorage.getItem("tasks") || "[]")
   );
 
+  // If nobody is logged in, send the person back to the login page.
   useEffect(() => {
     if (!user) {
       navigate("/");
