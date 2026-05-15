@@ -2,7 +2,7 @@
 // It also shows how many tasks are done and how many are left.
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "./Sidebar";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ const Profile = () => {
     }
   }, [navigate, user]);
 
-  // Save the new name and keep it for later.
+// Save the new name and keep it for later.
   const handleSave = () => {
     const updated = { ...user, name };
     localStorage.setItem("user", JSON.stringify(updated));
@@ -37,7 +37,7 @@ const Profile = () => {
   };
 
   const handleDeleteAccount = () => {
-    // Delete the saved account and all tasks, then go back to login.
+// Delete the saved account and all tasks, then go back to login.
     if (window.confirm("Are you sure? This cannot be undone.")) {
       localStorage.removeItem("user");
       localStorage.removeItem("tasks");
@@ -104,6 +104,7 @@ const Profile = () => {
                 />
               </div>
 
+{/* saving details */}
               <button
                 onClick={handleSave}
                 className="rounded-lg bg-indigo-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-indigo-700"
@@ -112,7 +113,7 @@ const Profile = () => {
               </button>
             </div>
 
-            {/* Danger Zone */}
+{/* Danger Zone */}
             <div className="mt-8 border-t border-gray-100 pt-6">
               <h3 className="mb-1 font-bold text-red-500">Danger Zone</h3>
               <p className="mb-4 text-sm text-gray-500">
@@ -128,7 +129,7 @@ const Profile = () => {
             </div>
           </div>
 
-          {/* Right Panel */}
+{/* Right Panel */}
           <div className="space-y-4">
             <div className="rounded-xl bg-indigo-600 p-6 text-white shadow-sm">
               <h2 className="mb-4 font-bold">Your Progress</h2>

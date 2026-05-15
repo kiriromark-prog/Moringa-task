@@ -2,7 +2,7 @@
 // The person can click a date to see tasks due on that day.
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "./Sidebar";
 
 const Calendar = () => {
   const navigate = useNavigate();
